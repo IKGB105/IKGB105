@@ -1,126 +1,126 @@
-# hey, soy estudiante de electrónica 👋
+# hey, i'm an electronics student 👋
 
-mira, esto es basicamente todo lo que he estado haciendo en la universidad. empecé obsesionado con entender cómo funcionan realmente las cosas a nivel de hardware, y bueno... aquí estamos.
+so basically, this is everything i've been doing at university. started obsessed with understanding how things actually work at the hardware level, and... here we are.
 
-## qué hago
+## what i do
 
-- diseño CPUs (simulé una RISC-V completa en Python porque los simuladores existentes no me mostraban lo que realmente quería ver)
-- programo microcontroladores en C + Assembly (cuando quiero controlar exactamente qué hace el hardware)
-- sintetizo cosas en FPGAs (Xilinx + Gowin, porque porqué limitarse a una)
-- debuggeo a nivel de registros (OpenOCD + GDB es mi mejor amigo)
-- automatizo cosas cuando estoy cansado de hacer lo mismo manual
+- design CPUs (built a complete RISC-V simulator in Python because existing simulators didn't show me what i actually wanted to see)
+- program microcontrollers in C + Assembly (when i want to control exactly what the hardware does)
+- synthesize stuff on FPGAs (Xilinx + Gowin, because why limit yourself to one)
+- debug at register level (OpenOCD + GDB is my best friend)
+- automate things when i'm tired of doing the same stuff manually
 
-## proyectos principales
+## main projects
 
 ### RISC-V Simulator
-ok aquí es donde todo empezó. quería entender la arquitectura completa, no solo memorizar instrucciones. entonces armé:
-- un decodificador que extrae opcode, rd, funct3, rs1, rs2, todo
-- una ALU con 16+ operaciones (ADD, MUL, DIV, MULH... los que realmente necesitas)
-- un RegisterFile 32x32 que valida según especificación IEEE
-- generación de VCD para ver exactamente qué pasa en GTKWave
+ok this is where it all started. i wanted to understand the complete architecture, not just memorize instructions. so i built:
+- a decoder that extracts opcode, rd, funct3, rs1, rs2, everything
+- an ALU with 16+ operations (ADD, MUL, DIV, MULH... the ones you actually need)
+- a 32x32 RegisterFile that validates according to IEEE spec
+- VCD generation to see exactly what happens in GTKWave
 
 ```python
-# el decodificador parsea instrucciones RISC-V y te dice exactamente qué es cada cosa
+# the decoder parses RISC-V instructions and tells you exactly what each thing is
 decoder = RISCVDecoder(instruction=0x12345678)
 opcode, rd, funct3, rs1, rs2 = decoder.extract()
 ```
 
-está en Python/Amaranth HDL. cuando lo terminé tuve ese momento de "aaah, ahora entiendo por qué se hace así"
+it's in Python/Amaranth HDL. when i finished it i had that "aaah, now i get why it's done this way" moment
 
-### ALU + RegisterFile en Verilog
-después quise sintetizar esto en hardware real. 20+ test vectors, cobertura exhaustiva. vi exactamente dónde fallan las cosas a nivel de timing
+### ALU + RegisterFile in Verilog
+afterwards i wanted to synthesize this on real hardware. 20+ test vectors, exhaustive coverage. i saw exactly where things fail at timing level
 
-### Multiplicador Booth (VHDL)
-este fue interesante porque tuve que entender la matemática detrás. más lento conceptualmente que los multiplicadores convencionales, pero si lo optimizas bien... funciona. sintetizé en Xilinx, jugué con trade-offs entre velocidad y área
+### Booth Multiplier (VHDL)
+this was interesting because i had to understand the math behind it. slower conceptually than conventional multipliers, but if you optimize it right... it works. synthesized on Xilinx, played with speed vs area trade-offs
 
-### Sistema RFID (STM32F446)
-esto fue el primer proyecto "real" que hice. lectura de tags RFID, validación de permisos, control de relé para una cerradura. suena simple pero involucra drivers personalizados, manejo de interrupts, y asegurar que no explote en producción
+### RFID Access Control System (STM32F446)
+this was the first "real" project i did. RFID tag reading, permission validation, relay control for a door lock. sounds simple but involves custom drivers, interrupt handling, and making sure it doesn't explode in production
 
-### FreeRTOS en STM32
-agregué un RTOS. multi-tasking, sincronización con mutexes, semáforos. la parte confusa fue entender context switching y por qué a veces se deadlockea todo si no tienes cuidado
+### FreeRTOS on STM32
+added an RTOS. multi-tasking, synchronization with mutexes, semaphores. the confusing part was understanding context switching and why everything deadlocks sometimes if you're not careful
 
-### 13+ Programas en ARM Assembly
-esto es donde realmente entiendes el hardware. GPIO, timers, UART, interrupt handlers. escribí bubble sort en Assembly puro porque... bueno, por qué no. fue dolor pero aprendí mucho
+### 13+ Programs in ARM Assembly
+this is where you really understand the hardware. GPIO, timers, UART, interrupt handlers. wrote bubble sort in pure Assembly because... well, why not. it hurt but i learned a lot
 
-### Arduino + C++ (23+ ejercicios de C, 30+ de C++)
-base sólida de programación. no es fancy pero es importante saber qué estás haciendo
+### Arduino + C++ (23+ C exercises, 30+ C++)
+solid programming foundation. it's not fancy but it's important to know what you're doing
 
-### FFT en Python
-procesamiento de señales. espectrograma, análisis, visualización. útil cuando necesitas saber qué frecuencias está generando algo
+### FFT in Python
+signal processing. spectrogram, analysis, visualization. useful when you need to know what frequencies something's generating
 
-### Suite de diseño de amplificadores (Python)
-automatizó el diseño de amplificadores BJT/MOSFET/JFET. cálculo de punto Q, cargas AC/DC. lo empaquetté como ejecutable con PyInstaller. está feo pero funciona
+### Amplifier Design Suite (Python)
+automated the design of BJT/MOSFET/JFET amplifiers. Q-point calculation, AC/DC load lines. packaged it as an executable with PyInstaller. it's ugly but it works
 
-## lenguajes que dominé (para bien o mal)
+## languages i picked up (for better or worse)
 
-| lenguaje | qué onda | experiencia |
-|----------|---------|-------------|
-| **Verilog** | para sintetizar en hardware, testbenches que funcionan | bastante |
-| **VHDL** | más verbose que Verilog pero Xilinx lo prefiere | bastante |
-| **Python** | simuladores, automatización, DSP, es mi "duct tape" | mucha |
-| **ARM Assembly** | bajo nivel puro, duele pero necesitas saberlo | bastante |
-| **C** | STM32, HAL, cosas embebidas | bastante |
-| **AVR Assembly** | microcontroladores simples, menos potencia | algo |
-| **C++** | OOP, Arduino sketches | básico pero va |
+| language | what for | experience |
+|----------|----------|-------------|
+| **Verilog** | hardware synthesis, working testbenches | quite a bit |
+| **VHDL** | more verbose than Verilog but Xilinx likes it | quite a bit |
+| **Python** | simulators, automation, DSP, my "duct tape" | a lot |
+| **ARM Assembly** | pure low-level stuff, hurts but you gotta know it | quite a bit |
+| **C** | STM32, HAL, embedded things | quite a bit |
+| **AVR Assembly** | simple microcontrollers, less power | some |
+| **C++** | OOP, Arduino sketches | basic but works |
 
-## herramientas que usé
+## tools i used
 
-- **Xilinx ISE/Vivado** - síntesis FPGA (curva de aprendizaje pero vale la pena)
-- **Gowin EDA** - alternativa más accesible, Tang Nano 1K
-- **OpenOCD + GDB** - debugging a nivel de registros (esto es crítico)
-- **GTKWave** - analizar trazas VCD cuando algo no funciona
-- **KiCAD** - diseño de esquemáticos, aunque prefiero trabajar con FPGAs
-- **STM32CubeIDE** - HAL, USB, interrupts, lo estándar
-- **Multisim** - simulación SPICE cuando necesito verificar electrónica analógica
-- **LaTeX** - documentación, presentaciones Beamer
+- **Xilinx ISE/Vivado** - FPGA synthesis (steep learning curve but worth it)
+- **Gowin EDA** - more accessible alternative, Tang Nano 1K
+- **OpenOCD + GDB** - debugging at register level (this is critical)
+- **GTKWave** - analyze VCD traces when something doesn't work
+- **KiCAD** - schematic design, though i prefer working with FPGAs
+- **STM32CubeIDE** - HAL, USB, interrupts, the standard stuff
+- **Multisim** - SPICE simulation when i need to verify analog electronics
+- **LaTeX** - documentation, Beamer presentations
 
-## plataformas donde me metí
+## platforms i got into
 
-- **STM32F411** (Blackpill) - mi primer ARM serio
-- **STM32F446RETx** - cuando necesitaba más poder
-- **Arduino** - para prototipear rápido
-- **ESP32** - IoT, WiFi, cuando necesitas wireless
-- **AVR ATmega8515** - lo antiguo pero es un buen aprendizaje
-- **Xilinx Spartan-6** (Mimas) - mi FPGA de laboratorio
-- **Gowin Tang Nano 1K** - FPGA chiquita pero poderosa
+- **STM32F411** (Blackpill) - my first serious ARM
+- **STM32F446RETx** - when i needed more power
+- **Arduino** - for quick prototyping
+- **ESP32** - IoT, WiFi, when you need wireless
+- **AVR ATmega8515** - the old stuff but good learning
+- **Xilinx Spartan-6** (Mimas) - my lab FPGA
+- **Gowin Tang Nano 1K** - small FPGA but powerful
 
-## lo que aprendí (la versión honesta)
+## what i learned (the honest version)
 
-- entender la arquitectura de una CPU es uno de los mejores cursos de ciencias de la computación que puedes tomar
-- debugging con OpenOCD/GDB te salva cuando algo explota a nivel de registros
-- VHDL no es tan malo una vez que entiendes por qué es tan verbose
-- Assembly es dolor pero cuando lo dominas, ves el código en C diferente
-- la documentación de datasheets es tu mejor amiga (lee cada sección)
-- testing exhaustivo previene dolores de cabeza después
-- Python es "good enough" para simuladores (startup time no importa si tu lógica es correcta)
+- understanding CPU architecture is one of the best computer science courses you can take
+- debugging with OpenOCD/GDB saves you when stuff explodes at register level
+- VHDL isn't that bad once you understand why it's so verbose
+- Assembly is painful but once you master it, you see C code differently
+- datasheet documentation is your best friend (read every section)
+- exhaustive testing prevents headaches later
+- Python is "good enough" for simulators (startup time doesn't matter if your logic is correct)
 
-## stats rápidas
+## quick stats
 
 ```
-14+ proyectos finalizados
-10,000+ líneas de código (más si cuentas ejercicios)
-6 lenguajes dominados más o menos
-2 fabricantes FPGA (Xilinx, Gowin)
-5 familias de microcontroladores diferentes
-13+ programas en Assembly
-Cambridge B2 Advanced en inglés
+14+ projects finished
+10,000+ lines of code (more if you count exercises)
+6 languages mastered more or less
+2 FPGA vendors (Xilinx, Gowin)
+5 different microcontroller families
+13+ programs in Assembly
+Cambridge B2 Advanced English
 ```
 
-## contacto
+## contact
 
-📧 **email:** [tu.email@uaa.edu.mx](mailto:tu.email@uaa.edu.mx)  
-💼 **linkedin:** [linkedin.com/in/tu_usuario](https://linkedin.com/)  
-☎️ **teléfono:** +52 XXXXXXXXX  
-📍 **ubicación:** Aguascalientes, México 🇲🇽  
+📧 **email:** [your.email@uaa.edu.mx](mailto:your.email@uaa.edu.mx)  
+💼 **linkedin:** [linkedin.com/in/your_user](https://linkedin.com/)  
+☎️ **phone:** +52 XXXXXXXXX  
+📍 **location:** Aguascalientes, Mexico 🇲🇽  
 
-## lo raro
+## the weird part
 
-si explorás el repo vas a ver archivos con nomenclatura fea, carpetas desorganizadas, y código que probablemente no te enamore. es que fueron proyectos universitarios, no un producto pulido. pero cada uno de esos archivos tiene algo que aprendí. si algo no tiene sentido, probablemente fue porque en su momento estaba aprendiendo
+if you explore the repo you'll see files with ugly naming, disorganized folders, and code that probably won't impress you. that's because these were university projects, not a polished product. but each of those files has something i learned. if something doesn't make sense, it's probably because it seemed like a good idea at the time
 
 ## disclaimer
 
-no soy ingeniero aún (todavía estoy en 6to semestre 😅). pero he metido horas serias entendiendo hardware, y eso cuenta para algo. si ves algo que está mal explicado o código cuestionable, es porque en su momento parecía buen idea
+i'm not an engineer yet (still in semester 6 😅). but i've put serious hours into understanding hardware, and that counts for something. if you see something that's poorly explained or questionable code, it's because it seemed like a good idea when i wrote it
 
-⭐ si algo te parece útil, dale una estrella. significa que alguien más piensa que no fue pérdida de tiempo
+⭐ if you find something useful, give it a star. it means someone else thinks it wasn't a waste of time
 
 happy hacking 🚀
