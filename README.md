@@ -1,126 +1,97 @@
-# hey, i'm an electronics student 👋
+# Electronics Engineering - Hardware & Architecture
 
-so basically, this is everything i've been doing at university. started obsessed with understanding how things actually work at the hardware level, and... here we are.
+Electronics student at UAA (6th semester). Working on CPU design, FPGA synthesis, embedded systems, and whatever else doesn't fit in a neat category.
 
-## what i do
+**Aguascalientes, Mexico** | ikergarcia450@gmail.com | +52 477 691 4456
 
-- design CPUs (built a complete RISC-V simulator in Python because existing simulators didn't show me what i actually wanted to see)
-- program microcontrollers in C + Assembly (when i want to control exactly what the hardware does)
-- synthesize stuff on FPGAs (Xilinx + Gowin, because why limit yourself to one)
-- debug at register level (OpenOCD + GDB is my best friend)
-- automate things when i'm tired of doing the same stuff manually
+---
 
-## main projects
+## What I'm doing
+
+Started with basic microcontroller projects but got obsessed with understanding why CPUs are designed the way they are. So I built a RISC-V simulator to work through the decode logic, instruction execution, register files, everything. After that, synthesizing hardware modules felt like the next logical step.
+
+Spend most of my time on:
+- RISC-V architecture and ISA implementation
+- FPGA design on Xilinx and Gowin platforms
+- Embedded systems (STM32, FreeRTOS, custom drivers)
+- Low-level ARM Assembly when I need precise hardware control
+- Debugging with OpenOCD/GDB when things don't work (which is often)
+
+---
+
+## Main projects
 
 ### RISC-V Simulator
-ok this is where it all started. i wanted to understand the complete architecture, not just memorize instructions. so i built:
-- a decoder that extracts opcode, rd, funct3, rs1, rs2, everything
-- an ALU with 16+ operations (ADD, MUL, DIV, MULH... the ones you actually need)
-- a 32x32 RegisterFile that validates according to IEEE spec
-- VCD generation to see exactly what happens in GTKWave
+Built a complete CPU simulator to actually understand what's happening at the instruction level. Not just a testbench—a working model with:
+- Full instruction decoder (extracts opcode, registers, immediate values)
+- 32-bit ALU with all the standard operations
+- Register file with proper RISC-V semantics (x0 is always zero)
+- VCD output to trace execution in GTKWave
 
-```python
-# the decoder parses RISC-V instructions and tells you exactly what each thing is
-decoder = RISCVDecoder(instruction=0x12345678)
-opcode, rd, funct3, rs1, rs2 = decoder.extract()
-```
-
-it's in Python/Amaranth HDL. when i finished it i had that "aaah, now i get why it's done this way" moment
-
-### ALU + RegisterFile in Verilog
-afterwards i wanted to synthesize this on real hardware. 20+ test vectors, exhaustive coverage. i saw exactly where things fail at timing level
+Started in Python/Amaranth, but after that I also implemented the ALU and RegisterFile in Verilog so I could see how it synthesizes on actual hardware.
 
 ### Booth Multiplier (VHDL)
-this was interesting because i had to understand the math behind it. slower conceptually than conventional multipliers, but if you optimize it right... it works. synthesized on Xilinx, played with speed vs area trade-offs
+Spent time understanding Booth's algorithm and how to implement it efficiently on an FPGA. Trade-offs are interesting—it's not the fastest algorithm in theory, but if you optimize the layout and synthesis, it actually performs well.
+
+### IEEE-754 Floating-Point Calculator (VHDL)
+Built a single-precision floating-point unit because the math behind IEEE-754 is more complex than I expected. Separate datapath modules for mantissa and exponent, proper rounding, exception flags. It works but the testbench took longer than the actual design.
 
 ### RFID Access Control System (STM32F446)
-this was the first "real" project i did. RFID tag reading, permission validation, relay control for a door lock. sounds simple but involves custom drivers, interrupt handling, and making sure it doesn't explode in production
+First real project that wasn't just an assignment. Reading RFID tags, validating against a list, controlling a relay for a door lock. Involved custom drivers, interrupt handling, making sure it doesn't randomly fail in production. Nothing fancy but it works.
 
 ### FreeRTOS on STM32
-added an RTOS. multi-tasking, synchronization with mutexes, semaphores. the confusing part was understanding context switching and why everything deadlocks sometimes if you're not careful
+Added an RTOS to understand scheduling and synchronization. Multi-tasking, task priorities, mutexes, semaphores. The confusing part was understanding why everything deadlocks sometimes if you're not careful with resource sharing.
 
-### 13+ Programs in ARM Assembly
-this is where you really understand the hardware. GPIO, timers, UART, interrupt handlers. wrote bubble sort in pure Assembly because... well, why not. it hurt but i learned a lot
-
-### Arduino + C++ (23+ C exercises, 30+ C++)
-solid programming foundation. it's not fancy but it's important to know what you're doing
+### ARM Assembly (13+ programs)
+This is where you actually learn architecture. GPIO configuration, timers, UART at the register level, interrupt handlers. Wrote bubble sort in pure Assembly because I wanted to understand the pain.
 
 ### FFT in Python
-signal processing. spectrogram, analysis, visualization. useful when you need to know what frequencies something's generating
+Signal processing project—computing frequency domain representation, visualization. Nothing groundbreaking but it's useful to understand when working with actual signals instead of abstractions.
 
-### Amplifier Design Suite (Python)
-automated the design of BJT/MOSFET/JFET amplifiers. Q-point calculation, AC/DC load lines. packaged it as an executable with PyInstaller. it's ugly but it works
+### Transistor Amplifier Suite (Python)
+Automated design of BJT/MOSFET amplifiers. Q-point calculation, load lines, SOA margins. Built it as a standalone executable because I was tired of running Python scripts for every design. It's not pretty but it works.
 
-## languages i picked up (for better or worse)
+---
 
-| language | what for | experience |
-|----------|----------|-------------|
-| **Verilog** | hardware synthesis, working testbenches | quite a bit |
-| **VHDL** | more verbose than Verilog but Xilinx likes it | quite a bit |
-| **Python** | simulators, automation, DSP, my "duct tape" | a lot |
-| **ARM Assembly** | pure low-level stuff, hurts but you gotta know it | quite a bit |
-| **C** | STM32, HAL, embedded things | quite a bit |
-| **AVR Assembly** | simple microcontrollers, less power | some |
-| **C++** | OOP, Arduino sketches | basic but works |
+## Languages & Tools
 
-## tools i used
+**HDL:** Verilog, VHDL, Amaranth HDL  
+**Programming:** Python (simulators, automation), C (embedded), ARM Assembly, C++ (a bit), AVR Assembly  
+**Platforms:** STM32F411, STM32F446, Arduino, ESP32, AVR ATmega8515  
+**FPGA:** Xilinx (Spartan-6), Gowin (Tang Nano 1K)  
+**Tools:** OpenOCD/GDB, GTKWave, Xilinx ISE/Vivado, KiCAD, COMSOL, LaTeX
 
-- **Xilinx ISE/Vivado** - FPGA synthesis (steep learning curve but worth it)
-- **Gowin EDA** - more accessible alternative, Tang Nano 1K
-- **OpenOCD + GDB** - debugging at register level (this is critical)
-- **GTKWave** - analyze VCD traces when something doesn't work
-- **KiCAD** - schematic design, though i prefer working with FPGAs
-- **STM32CubeIDE** - HAL, USB, interrupts, the standard stuff
-- **Multisim** - SPICE simulation when i need to verify analog electronics
-- **LaTeX** - documentation, Beamer presentations
+---
 
-## platforms i got into
+## Stats (if that matters)
 
-- **STM32F411** (Blackpill) - my first serious ARM
-- **STM32F446RETx** - when i needed more power
-- **Arduino** - for quick prototyping
-- **ESP32** - IoT, WiFi, when you need wireless
-- **AVR ATmega8515** - the old stuff but good learning
-- **Xilinx Spartan-6** (Mimas) - my lab FPGA
-- **Gowin Tang Nano 1K** - small FPGA but powerful
+- 14+ completed projects
+- ~10,000 lines of actual code (not counting exercises)
+- 6 programming languages
+- 2 FPGA vendors
+- 13+ programs in Assembly
+- Cambridge English B2 certified
 
-## what i learned (the honest version)
+---
 
-- understanding CPU architecture is one of the best computer science courses you can take
-- debugging with OpenOCD/GDB saves you when stuff explodes at register level
-- VHDL isn't that bad once you understand why it's so verbose
-- Assembly is painful but once you master it, you see C code differently
-- datasheet documentation is your best friend (read every section)
-- exhaustive testing prevents headaches later
-- Python is "good enough" for simulators (startup time doesn't matter if your logic is correct)
+## What I learned
 
-## quick stats
+The obvious stuff: understanding CPU architecture teaches you more about programming than most computer science courses. Debugging with OpenOCD/GDB saves you when things break at the register level. VHDL is verbose for a reason. Assembly hurts but afterward you read C code differently.
 
-```
-14+ projects finished
-10,000+ lines of code (more if you count exercises)
-6 languages mastered more or less
-2 FPGA vendors (Xilinx, Gowin)
-5 different microcontroller families
-13+ programs in Assembly
-Cambridge B2 Advanced English
-```
+Less obvious: datasheets have all the answers if you actually read them. Exhaustive testing prevents disasters. Python is good enough for hardware simulation if your logic is correct. Real hardware teaches lessons that simulation can't.
 
-## contact
+---
 
-📧 **email:** [your.email@uaa.edu.mx](mailto:your.email@uaa.edu.mx)  
-💼 **linkedin:** [linkedin.com/in/your_user](https://linkedin.com/)  
-☎️ **phone:** +52 XXXXXXXXX  
-📍 **location:** Aguascalientes, Mexico 🇲🇽  
+## Code quality disclaimer
 
-## the weird part
+Some of this is university coursework, some is learning-by-doing. If you see code that looks questionable, it probably seemed like the right approach at the time. Each project has something useful in it, even if the implementation isn't perfect.
 
-if you explore the repo you'll see files with ugly naming, disorganized folders, and code that probably won't impress you. that's because these were university projects, not a polished product. but each of those files has something i learned. if something doesn't make sense, it's probably because it seemed like a good idea at the time
+Open to feedback. If something is confusing or broken, let me know.
 
-## disclaimer
+---
 
-i'm not an engineer yet (still in semester 6 😅). but i've put serious hours into understanding hardware, and that counts for something. if you see something that's poorly explained or questionable code, it's because it seemed like a good idea when i wrote it
+**Email:** ikergarcia450@gmail.com  
+**GitHub:** [@IKGB105](https://github.com/IKGB105)  
+**LinkedIn:** [Iker Garcia](https://linkedin.com/)  
 
-⭐ if you find something useful, give it a star. it means someone else thinks it wasn't a waste of time
-
-happy hacking 🚀
+Last update: March 2026
