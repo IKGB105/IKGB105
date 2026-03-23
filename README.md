@@ -2,7 +2,7 @@
 
 Electronics student at UAA (6th semester). Working on CPU design, FPGA synthesis, embedded systems, and whatever else doesn't fit in a neat category.
 
-**Aguascalientes, Mexico** | ikergarcia450@gmail.com | +52 477 691 4456
+**Aguascalientes, Mexico**
 
 ---
 
