@@ -87,11 +87,3 @@ Less obvious: datasheets have all the answers if you actually read them. Exhaust
 Some of this is university coursework, some is learning-by-doing. If you see code that looks questionable, it probably seemed like the right approach at the time. Each project has something useful in it, even if the implementation isn't perfect.
 
 Open to feedback. If something is confusing or broken, let me know.
-
----
-
-**Email:** ikergarcia450@gmail.com  
-**GitHub:** [@IKGB105](https://github.com/IKGB105)  
-**LinkedIn:** [Iker Garcia](https://linkedin.com/)  
-
-Last update: March 2026
