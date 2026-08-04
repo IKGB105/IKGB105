@@ -31,7 +31,7 @@ Built a complete CPU simulator to actually understand what's happening at the in
 Started in Python/Amaranth, but after that I also implemented the ALU and RegisterFile in Verilog so I could see how it synthesizes on actual hardware.
 
 ### Booth Multiplier (VHDL)
-Spent time understanding Booth's algorithm and how to implement it efficiently on an FPGA. Trade-offs are interesting—it's not the fastest algorithm in theory, but if you optimize the layout and synthesis, it actually performs well.
+Spent time understanding Booth's algorithm and how to implement it efficiently on an FPGA. Trade-offs are interesting—it's not the fastest algorithm in theory, but if you optimize the layout and synthesis, it actually performs well. Part of the [vhdl-xilinx-labs](https://github.com/IKGB105/vhdl-xilinx-labs/tree/main/P7) coursework.
 
 ### IEEE-754 Floating-Point Calculator (VHDL)
 Built a single-precision floating-point unit because the math behind IEEE-754 is more complex than I expected. Separate datapath modules for mantissa and exponent, proper rounding, exception flags. It works but the testbench took longer than the actual design.
