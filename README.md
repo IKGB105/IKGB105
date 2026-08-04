@@ -1,6 +1,6 @@
 # Electronics Engineering - Hardware & Architecture
 
-Electronics student at UAA (6th semester). Working on CPU design, FPGA synthesis, embedded systems, and whatever else doesn't fit in a neat category.
+Electronics student at UAA (7th semester). Working on CPU design, FPGA synthesis, embedded systems, and whatever else doesn't fit in a neat category.
 
 **Aguascalientes, Mexico**
 
