@@ -23,7 +23,7 @@ Spend most of my time on:
 ## Main projects
 
 ### ARM Processor PCB Design (KiCad)
-Designed and routed a PCB for an ARM processor in KiCad — schematic capture, component placement, trace routing, all of it. First time taking a design from "does it work in simulation" to "does it work as an actual physical board."
+Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from schematic capture through final routing. Board includes a USB connector for power and programming, 4 user pushbuttons plus a dedicated reset, 8 status LEDs, and expansion headers for BOOT mode selection, a camera interface, and general I/O. Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated. First time taking a design all the way from "does it work in simulation" to "does it work as an actual physical board."
 
 ### RISC-V Simulator
 Built a complete CPU simulator to actually understand what's happening at the instruction level. Not just a testbench—a working model with:
