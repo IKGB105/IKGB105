@@ -8,13 +8,12 @@ Electronics student at UAA (7th semester), building toward complete hardware sys
 
 ## What I'm doing
 
-Started with basic microcontroller projects but got obsessed with understanding why CPUs are designed the way they are. So I built a RISC-V simulator to work through the decode logic, instruction execution, register files, everything. After that, synthesizing hardware modules felt like the next logical step — and from there, PCB design and full hardware/firmware/software systems felt like the natural direction. The goal is being able to say I designed the whole system, not just one piece of it.
+Started with basic microcontroller projects but got obsessed with understanding why CPUs are designed the way they are — built a RISC-V simulator to work through the decode logic, instruction execution, register files, everything, then moved into synthesizing hardware modules to see it run on real FPGAs. That depth is useful, but building a production safety-interlock system — a hardware relay wired into a real machine, driven by firmware and a web API, actually running at a food manufacturing plant — is what convinced me I want to keep working across the whole stack instead of specializing into just one layer. PCB design felt like the natural next piece from there: being able to say I designed the whole system, not just simulated one part of it.
 
 Spend most of my time on:
-- RISC-V architecture and ISA implementation
-- FPGA design on Xilinx and Gowin platforms
-- PCB design in KiCad
-- Embedded systems (STM32, FreeRTOS, custom drivers)
+- PCB design in KiCad — schematic capture through fabrication-ready routing
+- Embedded systems (STM32, FreeRTOS, custom drivers) and production hardware/firmware/software integration
+- FPGA design on Xilinx and Gowin platforms, RISC-V architecture and ISA implementation
 - Low-level ARM Assembly when I need precise hardware control
 - Debugging with OpenOCD/GDB when things don't work (which is often)
 
