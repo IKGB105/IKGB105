@@ -22,6 +22,9 @@ Spend most of my time on:
 
 ## Main projects
 
+### ARM Processor PCB Design (KiCad)
+Designed and routed a PCB for an ARM processor in KiCad — schematic capture, component placement, trace routing, all of it. First time taking a design from "does it work in simulation" to "does it work as an actual physical board."
+
 ### RISC-V Simulator
 Built a complete CPU simulator to actually understand what's happening at the instruction level. Not just a testbench—a working model with:
 - Full instruction decoder (extracts opcode, registers, immediate values)
@@ -51,9 +54,6 @@ Signal processing project—computing frequency domain representation, visualiza
 
 ### Transistor Amplifier Suite (Python)
 Automated design of BJT/MOSFET amplifiers. Q-point calculation, load lines, SOA margins. Built it as a standalone executable because I was tired of running Python scripts for every design. It's not pretty but it works.
-
-### ARM Processor PCB Design (KiCad)
-Designed and routed a PCB for an ARM processor in KiCad — schematic capture, component placement, trace routing, all of it. First time taking a design from "does it work in simulation" to "does it work as an actual physical board."
 
 ### IoT Safety Checklist & Hardware Interlock System (Raspberry Pi / Node.js)
 Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. Runs fully offline on a Raspberry Pi acting as its own WiFi access point, web server, and REST API. Includes photo evidence capture, automatic WhatsApp alerts, and an audited supervisor override flow. This is the project that made me want to keep working across the whole stack — hardware, firmware, and software — instead of picking just one.
