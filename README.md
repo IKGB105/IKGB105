@@ -1,6 +1,6 @@
-# Electronics Engineering - Hardware & Architecture
+# Hardware Systems Engineering
 
-Electronics student at UAA (7th semester). Working on CPU design, FPGA synthesis, embedded systems, and whatever else doesn't fit in a neat category.
+Electronics student at UAA (7th semester), building toward complete hardware systems — not isolated pieces. Working across FPGA/RTL design, PCB design, embedded systems, and production hardware/firmware/software integration.
 
 **Aguascalientes, Mexico**
 
@@ -8,11 +8,12 @@ Electronics student at UAA (7th semester). Working on CPU design, FPGA synthesis
 
 ## What I'm doing
 
-Started with basic microcontroller projects but got obsessed with understanding why CPUs are designed the way they are. So I built a RISC-V simulator to work through the decode logic, instruction execution, register files, everything. After that, synthesizing hardware modules felt like the next logical step.
+Started with basic microcontroller projects but got obsessed with understanding why CPUs are designed the way they are. So I built a RISC-V simulator to work through the decode logic, instruction execution, register files, everything. After that, synthesizing hardware modules felt like the next logical step — and from there, PCB design and full hardware/firmware/software systems felt like the natural direction. The goal is being able to say I designed the whole system, not just one piece of it.
 
 Spend most of my time on:
 - RISC-V architecture and ISA implementation
 - FPGA design on Xilinx and Gowin platforms
+- PCB design in KiCad
 - Embedded systems (STM32, FreeRTOS, custom drivers)
 - Low-level ARM Assembly when I need precise hardware control
 - Debugging with OpenOCD/GDB when things don't work (which is often)
@@ -50,6 +51,12 @@ Signal processing project—computing frequency domain representation, visualiza
 
 ### Transistor Amplifier Suite (Python)
 Automated design of BJT/MOSFET amplifiers. Q-point calculation, load lines, SOA margins. Built it as a standalone executable because I was tired of running Python scripts for every design. It's not pretty but it works.
+
+### ARM Processor PCB Design (KiCad)
+Designed and routed a PCB for an ARM processor in KiCad — schematic capture, component placement, trace routing, all of it. First time taking a design from "does it work in simulation" to "does it work as an actual physical board."
+
+### IoT Safety Checklist & Hardware Interlock System (Raspberry Pi / Node.js)
+Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. Runs fully offline on a Raspberry Pi acting as its own WiFi access point, web server, and REST API. Includes photo evidence capture, automatic WhatsApp alerts, and an audited supervisor override flow. This is the project that made me want to keep working across the whole stack — hardware, firmware, and software — instead of picking just one.
 
 ---
 
