@@ -8,7 +8,9 @@ Electronics student at UAA (7th semester), building toward complete hardware sys
 
 ## What I'm doing
 
-Started with basic microcontroller projects but got obsessed with understanding why CPUs are designed the way they are — built a RISC-V simulator to work through the decode logic, instruction execution, register files, everything, then moved into synthesizing hardware modules to see it run on real FPGAs. That depth is useful, but building a production safety-interlock system — a hardware relay wired into a real machine, driven by firmware and a web API, actually running at a food manufacturing plant — is what convinced me I want to keep working across the whole stack instead of specializing into just one layer. PCB design felt like the natural next piece from there: being able to say I designed the whole system, not just simulated one part of it.
+Started with basic microcontroller projects but got obsessed with understanding why CPUs are designed the way they are — built a RISC-V simulator to work through the decode logic, instruction execution, register files, everything, then moved into synthesizing hardware modules to see it run on real FPGAs. 
+
+That depth is useful, but building a production safety-interlock system — a hardware relay wired into a real machine, driven by firmware and a web API, actually running at a food manufacturing plant — is what convinced me I want to keep working across the whole stack instead of specializing into just one layer. PCB design felt like the natural next piece from there: being able to say I designed the whole system, not just simulated one part of it.
 
 Spend most of my time on:
 - PCB design in KiCad — schematic capture through fabrication-ready routing
@@ -24,13 +26,43 @@ Spend most of my time on:
 **These line up most with where I'm headed — complete systems, not isolated pieces:**
 
 ### IoT Safety Checklist & Hardware Interlock System (Raspberry Pi / Node.js)
-Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. Runs fully offline on a Raspberry Pi acting as its own WiFi access point, web server, and REST API. Includes photo evidence capture, automatic WhatsApp alerts, and an audited supervisor override flow. This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one.
+Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. 
+
+Runs fully offline on a Raspberry Pi acting as its own:
+- WiFi access point
+- Web server
+- REST API
+  
+Includes: 
+- Photo evidence capture
+- Automatic WhatsApp alerts
+- Audited supervisor override flow
+  
+This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one.
 
 ### ARM Processor PCB Design (KiCad)
-Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from schematic capture through final routing. Board includes a USB connector for power and programming, 4 user pushbuttons plus a dedicated reset, 8 status LEDs, and expansion headers for BOOT mode selection, a camera interface, and general I/O. Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated. My only real physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own.
+Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from schematic capture through final routing. 
+Board includes: 
+- A USB connector for power and programming
+- 4 user pushbuttons plus a dedicated reset
+- 8 status LEDs
+- Expansion headers for BOOT mode selection
+- A camera interface
+- General I/O
+
+Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. 
+
+- Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated. My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own.
+
+Note: I have made more PCBs but those were simple ones for classes like:
+- Disparador de Triacs
+- Buck de 24 - 120 V
+- Amplificador clase D con STM32 para DSP
+- Carrito seguidor de Linea
+- Fuente de voltaje con protecicon de cortos 
 
 ### Cycle-Accurate Game Boy (DMG-01) Emulator (Verilog)
-Building a cycle-accurate Game Boy (DMG-01) emulator entirely in Verilog, verified against a C++ testbench using Verilator — modeling the original hardware at the RTL level (CPU, memory bus, clock generation) instead of emulating behavior in software. Still in progress: fixed critical bugs in the memory bus module, exposed a raw 16-bit system counter from the clock module, next up is I/O register support to validate against blargg's CPU test ROMs. The goal is a complete system model, not an isolated processor core — this is the project that best shows I can reason about how CPU, memory, and bus fit together, not just one piece alone.
+Starting to build a cycle-accurate Game Boy (DMG-01) emulator entirely in Verilog, verified against a C++ testbench using Verilator — modeling the original hardware at the RTL level (CPU, memory bus, clock generation) instead of emulating behavior in software. Still in progress: fixed critical bugs in the memory bus module, exposed a raw 16-bit system counter from the clock module, next up is I/O register support to validate against blargg's CPU test ROMs. The goal is a complete system model, not an isolated processor core — this is the project that best shows I can reason about how CPU, memory, and bus fit together, not just one piece alone.
 
 ### RFID Access Control System (STM32F446)
 First real project that wasn't just an assignment. Reading RFID tags, validating against a list, controlling a relay for a door lock. Involved custom drivers, interrupt handling, making sure it doesn't randomly fail in production. Nothing fancy but it works — real hardware/firmware integration, not just a simulated peripheral.
