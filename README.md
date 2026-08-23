@@ -47,7 +47,7 @@ Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from
 
 Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated.
 
-My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own. I've also built simpler single-purpose PCBs for power electronics coursework (SCR firing controller, buck converter, Class D amplifier, DC-AC inverter, protected voltage supply) — see [power-electronics-pcbs](https://github.com/IKGB105/power-electronics-pcbs) for those.
+My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own. I've also built simpler single-purpose PCBs for power electronics coursework (SCR firing controller, buck converter, Class D amplifier, protected voltage supply) — see [power-electronics-pcbs](https://github.com/IKGB105/power-electronics-pcbs) for those.
 
 ### Outsider — Blackstar Amp Control (AI-Assisted Fork)
 An AI-assisted round of bug fixes and feature completions on a Linux GUI for controlling Blackstar ID-series guitar amplifiers over USB, forked from Jonathan Underwood's original, validated against a real Blackstar ID:15 TVP over the reverse-engineered USB protocol:
