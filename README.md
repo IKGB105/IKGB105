@@ -26,20 +26,46 @@ Spend most of my time on:
 **These line up most with where I'm headed — complete systems, not isolated pieces:**
 
 ### IoT Safety Checklist & Hardware Interlock System (Raspberry Pi / Node.js)
-Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. Runs fully offline on a Raspberry Pi acting as its own WiFi access point, web server, and REST API. Includes photo evidence capture, automatic WhatsApp alerts, and an audited supervisor override flow.
+Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. Runs fully offline on a Raspberry Pi acting as its own:
+- WiFi access point
+- Web server
+- REST API
+
+Also includes:
+- Photo evidence capture
+- Automatic WhatsApp alerts
+- Audited supervisor override flow
 
 This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one.
 
 ### ARM Processor PCB Design (KiCad)
-Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from schematic capture through final routing. Board includes a USB connector for power and programming, 4 user pushbuttons plus a dedicated reset, 8 status LEDs, and expansion headers for BOOT mode selection, a camera interface, and general I/O. Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated.
+Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from schematic capture through final routing. Board includes:
+- USB connector for power and programming
+- 4 user pushbuttons plus a dedicated reset
+- 8 status LEDs
+- Expansion headers for BOOT mode selection, a camera interface, and general I/O
+
+Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated.
 
 My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own. I've also built simpler single-purpose PCBs for power electronics coursework (SCR firing controller, buck converter, Class D amplifier, DC-AC inverter, protected voltage supply) — see [power-electronics-pcbs](https://github.com/IKGB105/power-electronics-pcbs) for those.
 
 ### Outsider — Blackstar Amp Control (AI-Assisted Fork)
-An AI-assisted round of bug fixes and feature completions on a Linux GUI for controlling Blackstar ID-series guitar amplifiers over USB, forked from Jonathan Underwood's original. Validated amplifier front-panel control, effects, preset save/restore, and full 128-preset backup/restore against a real Blackstar ID:15 TVP over the reverse-engineered USB protocol. Real communication with external hardware over a real bus, not a simulated peripheral — the same kind of protocol-level debugging that comes up in any board with a USB or serial interface.
+An AI-assisted round of bug fixes and feature completions on a Linux GUI for controlling Blackstar ID-series guitar amplifiers over USB, forked from Jonathan Underwood's original, validated against a real Blackstar ID:15 TVP over the reverse-engineered USB protocol:
+- Amplifier front-panel control
+- Effects control
+- Preset save/restore
+- Full 128-preset backup/restore
+
+Real communication with external hardware over a real bus, not a simulated peripheral — the same kind of protocol-level debugging that comes up in any board with a USB or serial interface.
 
 ### RFID Access Control System (STM32F446)
-First real project that wasn't just an assignment. Reading RFID tags, validating against a list, controlling a relay for a door lock. Involved custom drivers, interrupt handling, making sure it doesn't randomly fail in production. Nothing fancy but it works — real hardware/firmware integration, not just a simulated peripheral.
+First real project that wasn't just an assignment:
+- Reading RFID tags and validating against a list
+- Controlling a relay for a door lock
+- Custom drivers and interrupt handling
+- Making sure it doesn't randomly fail in production
+
+Nothing fancy but it works — real hardware/firmware integration, not just a simulated peripheral.
 
 **Strong systems/embedded fundamentals — good supporting evidence:**
 
@@ -53,10 +79,19 @@ Built a complete CPU simulator to actually understand what's happening at the in
 Started in Python/Amaranth, but after that I also implemented the ALU and RegisterFile in Verilog so I could see how it synthesizes on actual hardware. Strong on computer architecture depth, though it's a CPU core on its own rather than a full system.
 
 ### FreeRTOS on STM32
-Added an RTOS to understand scheduling and synchronization. Multi-tasking, task priorities, mutexes, semaphores. The confusing part was understanding why everything deadlocks sometimes if you're not careful with resource sharing.
+Added an RTOS to understand scheduling and synchronization:
+- Multi-tasking and task priorities
+- Mutexes and semaphores
+
+The confusing part was understanding why everything deadlocks sometimes if you're not careful with resource sharing.
 
 ### ARM Assembly (13+ programs)
-This is where you actually learn architecture. GPIO configuration, timers, UART at the register level, interrupt handlers. Wrote bubble sort in pure Assembly because I wanted to understand the pain.
+This is where you actually learn architecture:
+- GPIO configuration
+- Timers and UART at the register level
+- Interrupt handlers
+
+Wrote bubble sort in pure Assembly because I wanted to understand the pain.
 
 **More academic / isolated-piece exercises — solid work, but narrower in scope than the above:**
 
@@ -64,13 +99,23 @@ This is where you actually learn architecture. GPIO configuration, timers, UART 
 Spent time understanding Booth's algorithm and how to implement it efficiently on an FPGA. Trade-offs are interesting—it's not the fastest algorithm in theory, but if you optimize the layout and synthesis, it actually performs well. Part of the [vhdl-xilinx-labs](https://github.com/IKGB105/vhdl-xilinx-labs/tree/main/P7) coursework.
 
 ### IEEE-754 Floating-Point Calculator (VHDL)
-Built a single-precision floating-point unit because the math behind IEEE-754 is more complex than I expected. Separate datapath modules for mantissa and exponent, proper rounding, exception flags. It works but the testbench took longer than the actual design.
+Built a single-precision floating-point unit because the math behind IEEE-754 is more complex than I expected:
+- Separate datapath modules for mantissa and exponent
+- Proper rounding
+- Exception flags (NaN, overflow, underflow)
+
+It works but the testbench took longer than the actual design.
 
 ### FFT in Python
 Signal processing project—computing frequency domain representation, visualization. Nothing groundbreaking but it's useful to understand when working with actual signals instead of abstractions.
 
 ### Transistor Amplifier Suite (Python)
-Automated design of BJT/MOSFET amplifiers. Q-point calculation, load lines, SOA margins. Built it as a standalone executable because I was tired of running Python scripts for every design. It's not pretty but it works.
+Automated design of BJT/MOSFET amplifiers:
+- Q-point calculation
+- Load lines
+- SOA margins
+
+Built it as a standalone executable because I was tired of running Python scripts for every design. It's not pretty but it works.
 
 ---
 
