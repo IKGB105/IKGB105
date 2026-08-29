@@ -96,7 +96,7 @@ Wrote bubble sort in pure Assembly because I wanted to understand the pain.
 **More academic / isolated-piece exercises — solid work, but narrower in scope than the above:**
 
 ### Booth Multiplier (VHDL)
-Spent time understanding Booth's algorithm and how to implement it efficiently on an FPGA. Trade-offs are interesting—it's not the fastest algorithm in theory, but if you optimize the layout and synthesis, it actually performs well. Part of the [vhdl-xilinx-labs](https://github.com/IKGB105/vhdl-xilinx-labs/tree/main/P7) coursework.
+Spent time understanding Booth's algorithm and how to implement it efficiently on an FPGA. Trade-offs are interesting—it's not the fastest algorithm in theory, but if you optimize the layout and synthesis, it actually performs well. Part of the [VHDL-LABS](https://github.com/IKGB105/VHDL-LABS/tree/main/xilinx-labs/P7) coursework.
 
 ### IEEE-754 Floating-Point Calculator (VHDL)
 Built a single-precision floating-point unit because the math behind IEEE-754 is more complex than I expected:
