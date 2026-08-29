@@ -8,15 +8,15 @@ Electronics student at UAA (7th semester), building toward complete hardware sys
 
 ## What I'm doing
 
-Started with basic microcontroller projects but got obsessed with understanding why CPUs are designed the way they are — built a RISC-V simulator to work through the decode logic, instruction execution, register files, everything, then moved into synthesizing hardware modules to see it run on real FPGAs. 
+Focused on building complete hardware systems — PCB design, embedded firmware, and the digital logic underneath, not just one layer in isolation. Most of my recent work is physical: I've designed and routed boards from schematic to fabrication-ready Gerbers, from an ARM Cortex-M platform to a handful of power electronics projects (SCR control, buck conversion, a Class D amplifier).
 
-That depth is useful, but building a production safety-interlock system — a hardware relay wired into a real machine, driven by firmware and a web API, actually running at a food manufacturing plant — is what convinced me I want to keep working across the whole stack instead of specializing into just one layer. PCB design felt like the natural next piece from there: being able to say I designed the whole system, not just simulated one part of it.
+That systems-first instinct came from building a production safety-interlock system — a hardware relay wired into a real machine, driven by firmware and a web API, actually running at a food manufacturing plant. Before that I went deep on computer architecture (built a RISC-V simulator, synthesized it on real FPGAs) to understand why CPUs are designed the way they are — that depth still shows up in how I approach hardware, it's just not the main focus anymore.
 
 Spend most of my time on:
 - PCB design in KiCad — schematic capture through fabrication-ready routing
+- Power electronics: SCR control, buck conversion, Class D amplification
 - Embedded systems (STM32, FreeRTOS, custom drivers) and production hardware/firmware/software integration
-- FPGA design on Xilinx and Gowin platforms, RISC-V architecture and ISA implementation
-- Low-level ARM Assembly when I need precise hardware control
+- FPGA design and RISC-V architecture when a project calls for it
 - Debugging with OpenOCD/GDB when things don't work (which is often)
 
 ---
