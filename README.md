@@ -25,19 +25,6 @@ Spend most of my time on:
 
 **These line up most with where I'm headed — complete systems, not isolated pieces:**
 
-### IoT Safety Checklist & Hardware Interlock System (Raspberry Pi / Node.js)
-Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. Runs fully offline on a Raspberry Pi acting as its own:
-- WiFi access point
-- Web server
-- REST API
-
-Also includes:
-- Photo evidence capture
-- Automatic WhatsApp alerts
-- Audited supervisor override flow
-
-This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one — [IOT-Safety-Checklist](https://github.com/IKGB105/IOT-Safety-Checklist)
-
 ### ARM Processor PCB Design (KiCad)
 Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from schematic capture through final routing. Board includes:
 - USB connector for power and programming
@@ -50,7 +37,25 @@ Used a ground pour across the stackup to keep return paths short on a design tha
 My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own. I've also built simpler single-purpose PCBs for power electronics coursework (SCR firing controller, buck converter, Class D amplifier, protected voltage supply) — see [PCBs-POWER-ELECTRONICS](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS) for those.
 
 ### Adjustable LM317 Power Supply — SPICE, PCB & Thermal FEM
-Full power-supply design loop documented as an honest engineering logbook: LTspice simulation of the adjustable topology, KiCad PCB layout, and a COMSOL thermal FEM study of the regulator's worst-case junction temperature that drove two rounds of heatsink selection. The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis — [LM317-Adjustable-PowerSupply](https://github.com/IKGB105/LM317-Adjustable-PowerSupply)
+Full power-supply design loop documented as an honest engineering logbook: 
+  * LTspice simulation of the adjustable topology
+  * KiCad PCB layout
+  * COMSOL thermal FEM study of the regulator's worst-case temperature
+
+The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis — [LM317-Adjustable-PowerSupply](https://github.com/IKGB105/LM317-Adjustable-PowerSupply)
+
+### IoT Safety Checklist & Hardware Interlock System (Raspberry Pi / Node.js)
+Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. Runs fully offline on a Raspberry Pi acting as its own:
+- WiFi access point
+- Web server
+- REST API
+
+Also includes:
+- Photo evidence capture
+- Automatic WhatsApp alerts
+- Audited supervisor override flow
+
+This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one — [IOT-Safety-Checklist](https://github.com/IKGB105/IOT-Safety-Checklist)
 
 ### Outsider — Blackstar Amp Control (AI-Assisted Fork)
 An AI-assisted round of bug fixes and feature completions on a Linux GUI for controlling Blackstar ID-series guitar amplifiers over USB, forked from Jonathan Underwood's original, validated against a real Blackstar ID:15 TVP over the reverse-engineered USB protocol:
