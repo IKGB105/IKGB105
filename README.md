@@ -61,74 +61,35 @@ An AI-assisted round of bug fixes and feature completions on a Linux GUI for con
 
 Real communication with external hardware over a real bus, not a simulated peripheral — the same kind of protocol-level debugging that comes up in any board with a USB or serial interface — [Outsider-AI-FIX](https://github.com/IKGB105/Outsider-AI-FIX)
 
-### RFID Access Control System (STM32F446)
-First real project that wasn't just an assignment:
-- Reading RFID tags and validating against a list
-- Controlling a relay for a door lock
-- Custom drivers and interrupt handling
-- Making sure it doesn't randomly fail in production
+Strong systems/embedded fundamentals — good supporting evidence:
 
-Nothing fancy but it works — real hardware/firmware integration, not just a simulated peripheral — [RFID-Access-Control-using-STM32F446RETx](https://github.com/IKGB105/RFID-Access-Control-using-STM32F446RETx)
+ * **RFID Access Control System (STM32F446)** — [RFID-Access-Control-using-STM32F446RETx](https://github.com/IKGB105/RFID-Access-Control-using-STM32F446RETx)
 
-**Strong systems/embedded fundamentals — good supporting evidence:**
+ * **RISC-V Simulator** — [RISC-V-CPU-Designs](https://github.com/IKGB105/RISC-V-CPU-Designs)
 
-### RISC-V Simulator
-Built a complete CPU simulator to actually understand what's happening at the instruction level. Not just a testbench—a working model with:
-- Full instruction decoder (extracts opcode, registers, immediate values)
-- 32-bit ALU with all the standard operations
-- Register file with proper RISC-V semantics (x0 is always zero)
-- VCD output to trace execution in GTKWave
+ * **FreeRTOS on STM32** — part of [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
 
-Started in Python/Amaranth, but after that I also implemented the ALU and RegisterFile in Verilog so I could see how it synthesizes on actual hardware. Strong on computer architecture depth, though it's a CPU core on its own rather than a full system — [RISC-V-CPU-Designs](https://github.com/IKGB105/RISC-V-CPU-Designs)
-
-### FreeRTOS on STM32
-Added an RTOS to understand scheduling and synchronization:
-- Multi-tasking and task priorities
-- Mutexes and semaphores
-
-The confusing part was understanding why everything deadlocks sometimes if you're not careful with resource sharing — part of [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
-
-### ARM Assembly (13+ programs)
-This is where you actually learn architecture:
-- GPIO configuration
-- Timers and UART at the register level
-- Interrupt handlers
-
-Wrote bubble sort in pure Assembly because I wanted to understand the pain — also in [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
+ * **ARM Assembly** (13+ programs) — also in [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
 
 **More academic / isolated-piece exercises — solid work, but narrower in scope than the above:**
 
-### Booth Multiplier (VHDL)
-Spent time understanding Booth's algorithm and how to implement it efficiently on an FPGA. Trade-offs are interesting—it's not the fastest algorithm in theory, but if you optimize the layout and synthesis, it actually performs well. Part of the [VHDL-LABS](https://github.com/IKGB105/VHDL-LABS/tree/main/xilinx-labs/P7) coursework.
+ * **Booth Multiplier** (VHDL) — Part of the [VHDL-LABS](https://github.com/IKGB105/VHDL-LABS/tree/main/xilinx-labs/P7) coursework.
 
-### IEEE-754 Floating-Point Calculator (VHDL)
-Built a single-precision floating-point unit because the math behind IEEE-754 is more complex than I expected:
-- Separate datapath modules for mantissa and exponent
-- Proper rounding
-- Exception flags (NaN, overflow, underflow)
+ * **IEEE-754 Floating-Point Calculator** (VHDL) — [IEEE-754-Calc-VHDL](https://github.com/IKGB105/IEEE-754-Calc-VHDL)
 
-It works but the testbench took longer than the actual design — [IEEE-754-Calc-VHDL](https://github.com/IKGB105/IEEE-754-Calc-VHDL)
+ * **FFT in Python** — [Py-FFT-Upscaling](https://github.com/IKGB105/Py-FFT-Upscaling)
 
-### FFT in Python
-Signal processing project—computing frequency domain representation, visualization. Nothing groundbreaking but it's useful to understand when working with actual signals instead of abstractions — [Py-FFT-Upscaling](https://github.com/IKGB105/Py-FFT-Upscaling)
-
-### Transistor Amplifier Suite (Python)
-Automated design of BJT/MOSFET amplifiers:
-- Q-point calculation
-- Load lines
-- SOA margins
-
-Built it as a standalone executable because I was tired of running Python scripts for every design. It's not pretty but it works — [transistor-designer-calculator](https://github.com/IKGB105/transistor-designer-calculator)
+ * **Transistor Amplifier Suite** (Python) — [transistor-designer-calculator](https://github.com/IKGB105/transistor-designer-calculator)
 
 ---
 
 ## Languages & Tools
 
 **PCB & Power:** KiCad (schematic to fabrication-ready Gerbers), LTspice, COMSOL (thermal FEM)  
-**HDL & FPGA:** Verilog, VHDL, Amaranth HDL, Xilinx (ISE/Vivado, Spartan-6), Gowin EDA (Tang Nano 1K)  
 **Embedded Platforms:** STM32F411, STM32F446, Arduino, ESP32, AVR ATmega8515  
 **Programming:** Python (simulators, automation), C (embedded), ARM Assembly, C++ (a bit), AVR Assembly  
-**Tools & Debug:** Git, OpenOCD/GDB, GTKWave, LaTeX
+**HDL & FPGA:** Verilog, VHDL, Amaranth HDL, Xilinx (ISE/Vivado, Spartan-6), Gowin EDA (Tang Nano 1K)  
+**Tools & Debug:** Git, LaTeX, OpenOCD/GDB, GTKWave 
 
 ---
 
@@ -150,11 +111,3 @@ Built it as a standalone executable because I was tired of running Python script
 The obvious stuff: understanding CPU architecture teaches you more about programming than most computer science courses. Debugging with OpenOCD/GDB saves you when things break at the register level. VHDL is verbose for a reason. Assembly hurts but afterward you read C code differently.
 
 Less obvious: datasheets have all the answers if you actually read them. Exhaustive testing prevents disasters. Python is good enough for hardware simulation if your logic is correct. Real hardware teaches lessons that simulation can't. Simulation catches the arithmetic errors hand calculations miss. Thermal FEM turns "should be fine" into an actual number worth knowing before you build.
-
----
-
-## Code quality disclaimer
-
-Some of this is university coursework, some is learning-by-doing. If you see code that looks questionable, it probably seemed like the right approach at the time. Each project has something useful in it, even if the implementation isn't perfect.
-
-Open to feedback. If something is confusing or broken, let me know.
