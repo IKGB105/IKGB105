@@ -1,5 +1,5 @@
 # Hardware Systems Engineering  
-[My webpage:](https://ikgb105.github.io/) 
+[My webpage](https://ikgb105.github.io/) 
 
 Electronics student at UAA (7th semester), building toward complete hardware systems — not isolated pieces. Working across FPGA/RTL design, PCB design, embedded systems, and production hardware/firmware/software integration.
 
