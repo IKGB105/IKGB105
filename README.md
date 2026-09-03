@@ -74,16 +74,8 @@ Also includes:
 
 This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one.
 
-### Outsider — Blackstar Amp Control (AI-Assisted Fork)
-[Outsider-AI-FIX](https://github.com/IKGB105/Outsider-AI-FIX)
-
-An AI-assisted round of bug fixes and feature completions on a Linux GUI for controlling Blackstar ID-series guitar amplifiers over USB, forked from Jonathan Underwood's original, validated against a real Blackstar ID:15 TVP over the reverse-engineered USB protocol:
-- Amplifier front-panel control
-- Effects control
-- Preset save/restore
-- Full 128-preset backup/restore
-
-Real communication with external hardware over a real bus, not a simulated peripheral — the same kind of protocol-level debugging that comes up in any board with a USB or serial interface.
+### Outsider — Blackstar Amp Control (AI-Assisted Fork) — [Outsider-AI-FIX](https://github.com/IKGB105/Outsider-AI-FIX)
+* An AI-assisted round of bug fixes and feature completions on a Linux GUI for controlling Blackstar ID-series guitar amplifiers over USB, forked from Jonathan Underwood's original, validated against a real Blackstar ID:15 TVP over the reverse-engineered USB protocol.
 
 
 **Strong systems/embedded fundamentals — good supporting evidence:**
