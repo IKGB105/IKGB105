@@ -110,19 +110,10 @@ Real communication with external hardware over a real bus, not a simulated perip
 
 ## Stats (if that matters)
 
-- 14+ completed projects
-- 6+ PCBs designed and routed in KiCad
+- 20+ completed projects
+- 8+ PCBs designed and routed in KiCad
 - 1 production system deployed and actually running
 - ~10,000 lines of actual code (not counting exercises)
 - 6 programming languages
-- 2 FPGA vendors
-- 13+ programs in Assembly
+- 2 FPGA vendors (Xilinx and Gowin)
 - Cambridge English B2 certified
-
----
-
-## What I learned
-
-The obvious stuff: understanding CPU architecture teaches you more about programming than most computer science courses. Debugging with OpenOCD/GDB saves you when things break at the register level. VHDL is verbose for a reason. Assembly hurts but afterward you read C code differently.
-
-Less obvious: datasheets have all the answers if you actually read them. Exhaustive testing prevents disasters. Python is good enough for hardware simulation if your logic is correct. Real hardware teaches lessons that simulation can't. Simulation catches the arithmetic errors hand calculations miss. Thermal FEM turns "should be fine" into an actual number worth knowing before you build.
