@@ -34,7 +34,7 @@ Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from
 
 Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated — [PCB-ARM-Kicad](https://github.com/IKGB105/PCB-ARM-Kicad)
 
-My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own. I've also built simpler single-purpose PCBs for power electronics coursework (SCR firing controller, buck converter, Class D amplifier, protected voltage supply) — see [PCBs-POWER-ELECTRONICS](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS) for those.
+My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own.
 
 ### Adjustable LM317 Power Supply — SPICE, PCB & Thermal FEM
 Full power-supply design loop documented as an honest engineering logbook: 
@@ -43,6 +43,15 @@ Full power-supply design loop documented as an honest engineering logbook:
   * COMSOL thermal FEM study of the regulator's worst-case temperature
 
 The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis — [LM317-Adjustable-PowerSupply](https://github.com/IKGB105/LM317-Adjustable-PowerSupply)
+
+### Power Electronics PCBs
+Four physical PCBs from power electronics coursework, each with its own schematic, layout, and 3D render:
+- SCR/thyristor firing controller
+- Buck converter
+- STM32-controlled Class D amplifier
+- Two-board protected voltage supply with short-circuit protection
+
+All four designed, routed, and rendered; the protected power supply's power stage is fully routed with fabrication-ready Gerbers. Simpler single-purpose boards than the ARM PCB above, but real practice across control, power-conversion, and audio topologies — [PCBs-POWER-ELECTRONICS](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS)
 
 ### IoT Safety Checklist & Hardware Interlock System (Raspberry Pi / Node.js)
 Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. Runs fully offline on a Raspberry Pi acting as its own:
