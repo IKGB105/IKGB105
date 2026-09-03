@@ -61,8 +61,8 @@ An AI-assisted round of bug fixes and feature completions on a Linux GUI for con
 
 Real communication with external hardware over a real bus, not a simulated peripheral — the same kind of protocol-level debugging that comes up in any board with a USB or serial interface — [Outsider-AI-FIX](https://github.com/IKGB105/Outsider-AI-FIX)
 
-Strong systems/embedded fundamentals — good supporting evidence:
 
+**Strong systems/embedded fundamentals — good supporting evidence:**
  * **RFID Access Control System (STM32F446)** — [RFID-Access-Control-using-STM32F446RETx](https://github.com/IKGB105/RFID-Access-Control-using-STM32F446RETx)
 
  * **RISC-V Simulator** — [RISC-V-CPU-Designs](https://github.com/IKGB105/RISC-V-CPU-Designs)
@@ -70,6 +70,7 @@ Strong systems/embedded fundamentals — good supporting evidence:
  * **FreeRTOS on STM32** — part of [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
 
  * **ARM Assembly** (13+ programs) — also in [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
+
 
 **More academic / isolated-piece exercises — solid work, but narrower in scope than the above:**
 
