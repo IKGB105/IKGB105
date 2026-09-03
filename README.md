@@ -26,34 +26,42 @@ Spend most of my time on:
 **These line up most with where I'm headed — complete systems, not isolated pieces:**
 
 ### ARM Processor PCB Design (KiCad)
+[PCB-ARM-Kicad](https://github.com/IKGB105/PCB-ARM-Kicad)
+
 Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from schematic capture through final routing. Board includes:
 - USB connector for power and programming
 - 4 user pushbuttons plus a dedicated reset
 - 8 status LEDs
 - Expansion headers for BOOT mode selection, a camera interface, and general I/O
 
-Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated — [PCB-ARM-Kicad](https://github.com/IKGB105/PCB-ARM-Kicad)
+Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated.
 
 My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own.
 
 ### Adjustable LM317 Power Supply — SPICE, PCB & Thermal FEM
+[LM317-Adjustable-PowerSupply](https://github.com/IKGB105/LM317-Adjustable-PowerSupply)
+
 Full power-supply design loop documented as an honest engineering logbook: 
   * LTspice simulation of the adjustable topology
   * KiCad PCB layout
   * COMSOL thermal FEM study of the regulator's worst-case temperature
 
-The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis — [LM317-Adjustable-PowerSupply](https://github.com/IKGB105/LM317-Adjustable-PowerSupply)
+The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis.
 
 ### Power Electronics PCBs
+[PCBs-POWER-ELECTRONICS](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS)
+
 Four physical PCBs from power electronics coursework, each with its own schematic, layout, and 3D render:
 - SCR/thyristor firing controller
 - Buck converter
 - STM32-controlled Class D amplifier
 - Two-board protected voltage supply with short-circuit protection
 
-All four designed, routed, and rendered; the protected power supply's power stage is fully routed with fabrication-ready Gerbers. Simpler single-purpose boards than the ARM PCB above, but real practice across control, power-conversion, and audio topologies — [PCBs-POWER-ELECTRONICS](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS)
+All four designed, routed, and rendered; the protected power supply's power stage is fully routed with fabrication-ready Gerbers. Simpler single-purpose boards than the ARM PCB above, but real practice across control, power-conversion, and audio topologies.
 
 ### IoT Safety Checklist & Hardware Interlock System (Raspberry Pi / Node.js)
+[IOT-Safety-Checklist](https://github.com/IKGB105/IOT-Safety-Checklist)
+
 Production system deployed at a food manufacturing plant. Digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired into the start-button circuit only closes after the checklist is approved. Runs fully offline on a Raspberry Pi acting as its own:
 - WiFi access point
 - Web server
@@ -64,16 +72,18 @@ Also includes:
 - Automatic WhatsApp alerts
 - Audited supervisor override flow
 
-This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one — [IOT-Safety-Checklist](https://github.com/IKGB105/IOT-Safety-Checklist)
+This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one.
 
 ### Outsider — Blackstar Amp Control (AI-Assisted Fork)
+[Outsider-AI-FIX](https://github.com/IKGB105/Outsider-AI-FIX)
+
 An AI-assisted round of bug fixes and feature completions on a Linux GUI for controlling Blackstar ID-series guitar amplifiers over USB, forked from Jonathan Underwood's original, validated against a real Blackstar ID:15 TVP over the reverse-engineered USB protocol:
 - Amplifier front-panel control
 - Effects control
 - Preset save/restore
 - Full 128-preset backup/restore
 
-Real communication with external hardware over a real bus, not a simulated peripheral — the same kind of protocol-level debugging that comes up in any board with a USB or serial interface — [Outsider-AI-FIX](https://github.com/IKGB105/Outsider-AI-FIX)
+Real communication with external hardware over a real bus, not a simulated peripheral — the same kind of protocol-level debugging that comes up in any board with a USB or serial interface.
 
 
 **Strong systems/embedded fundamentals — good supporting evidence:**
