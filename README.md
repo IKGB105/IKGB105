@@ -36,7 +36,7 @@ Also includes:
 - Automatic WhatsApp alerts
 - Audited supervisor override flow
 
-This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one.
+This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one — [IOT-Safety-Checklist](https://github.com/IKGB105/IOT-Safety-Checklist)
 
 ### ARM Processor PCB Design (KiCad)
 Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from schematic capture through final routing. Board includes:
@@ -45,7 +45,7 @@ Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from
 - 8 status LEDs
 - Expansion headers for BOOT mode selection, a camera interface, and general I/O
 
-Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated.
+Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated — [PCB-ARM-Kicad](https://github.com/IKGB105/PCB-ARM-Kicad)
 
 My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own. I've also built simpler single-purpose PCBs for power electronics coursework (SCR firing controller, buck converter, Class D amplifier, protected voltage supply) — see [PCBs-POWER-ELECTRONICS](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS) for those.
 
@@ -59,7 +59,7 @@ An AI-assisted round of bug fixes and feature completions on a Linux GUI for con
 - Preset save/restore
 - Full 128-preset backup/restore
 
-Real communication with external hardware over a real bus, not a simulated peripheral — the same kind of protocol-level debugging that comes up in any board with a USB or serial interface.
+Real communication with external hardware over a real bus, not a simulated peripheral — the same kind of protocol-level debugging that comes up in any board with a USB or serial interface — [Outsider-AI-FIX](https://github.com/IKGB105/Outsider-AI-FIX)
 
 ### RFID Access Control System (STM32F446)
 First real project that wasn't just an assignment:
@@ -68,7 +68,7 @@ First real project that wasn't just an assignment:
 - Custom drivers and interrupt handling
 - Making sure it doesn't randomly fail in production
 
-Nothing fancy but it works — real hardware/firmware integration, not just a simulated peripheral.
+Nothing fancy but it works — real hardware/firmware integration, not just a simulated peripheral — [RFID-Access-Control-using-STM32F446RETx](https://github.com/IKGB105/RFID-Access-Control-using-STM32F446RETx)
 
 **Strong systems/embedded fundamentals — good supporting evidence:**
 
@@ -79,14 +79,14 @@ Built a complete CPU simulator to actually understand what's happening at the in
 - Register file with proper RISC-V semantics (x0 is always zero)
 - VCD output to trace execution in GTKWave
 
-Started in Python/Amaranth, but after that I also implemented the ALU and RegisterFile in Verilog so I could see how it synthesizes on actual hardware. Strong on computer architecture depth, though it's a CPU core on its own rather than a full system.
+Started in Python/Amaranth, but after that I also implemented the ALU and RegisterFile in Verilog so I could see how it synthesizes on actual hardware. Strong on computer architecture depth, though it's a CPU core on its own rather than a full system — [RISC-V-CPU-Designs](https://github.com/IKGB105/RISC-V-CPU-Designs)
 
 ### FreeRTOS on STM32
 Added an RTOS to understand scheduling and synchronization:
 - Multi-tasking and task priorities
 - Mutexes and semaphores
 
-The confusing part was understanding why everything deadlocks sometimes if you're not careful with resource sharing.
+The confusing part was understanding why everything deadlocks sometimes if you're not careful with resource sharing — part of [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
 
 ### ARM Assembly (13+ programs)
 This is where you actually learn architecture:
@@ -94,7 +94,7 @@ This is where you actually learn architecture:
 - Timers and UART at the register level
 - Interrupt handlers
 
-Wrote bubble sort in pure Assembly because I wanted to understand the pain.
+Wrote bubble sort in pure Assembly because I wanted to understand the pain — also in [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
 
 **More academic / isolated-piece exercises — solid work, but narrower in scope than the above:**
 
@@ -107,10 +107,10 @@ Built a single-precision floating-point unit because the math behind IEEE-754 is
 - Proper rounding
 - Exception flags (NaN, overflow, underflow)
 
-It works but the testbench took longer than the actual design.
+It works but the testbench took longer than the actual design — [IEEE-754-Calc-VHDL](https://github.com/IKGB105/IEEE-754-Calc-VHDL)
 
 ### FFT in Python
-Signal processing project—computing frequency domain representation, visualization. Nothing groundbreaking but it's useful to understand when working with actual signals instead of abstractions.
+Signal processing project—computing frequency domain representation, visualization. Nothing groundbreaking but it's useful to understand when working with actual signals instead of abstractions — [Py-FFT-Upscaling](https://github.com/IKGB105/Py-FFT-Upscaling)
 
 ### Transistor Amplifier Suite (Python)
 Automated design of BJT/MOSFET amplifiers:
@@ -118,23 +118,25 @@ Automated design of BJT/MOSFET amplifiers:
 - Load lines
 - SOA margins
 
-Built it as a standalone executable because I was tired of running Python scripts for every design. It's not pretty but it works.
+Built it as a standalone executable because I was tired of running Python scripts for every design. It's not pretty but it works — [transistor-designer-calculator](https://github.com/IKGB105/transistor-designer-calculator)
 
 ---
 
 ## Languages & Tools
 
-**HDL:** Verilog, VHDL, Amaranth HDL  
+**PCB & Power:** KiCad (schematic to fabrication-ready Gerbers), LTspice, COMSOL (thermal FEM)  
+**HDL & FPGA:** Verilog, VHDL, Amaranth HDL, Xilinx (ISE/Vivado, Spartan-6), Gowin EDA (Tang Nano 1K)  
+**Embedded Platforms:** STM32F411, STM32F446, Arduino, ESP32, AVR ATmega8515  
 **Programming:** Python (simulators, automation), C (embedded), ARM Assembly, C++ (a bit), AVR Assembly  
-**Platforms:** STM32F411, STM32F446, Arduino, ESP32, AVR ATmega8515  
-**FPGA:** Xilinx (Spartan-6), Gowin (Tang Nano 1K)  
-**Tools:** OpenOCD/GDB, GTKWave, Xilinx ISE/Vivado, KiCAD, COMSOL, LaTeX
+**Tools & Debug:** Git, OpenOCD/GDB, GTKWave, LaTeX
 
 ---
 
 ## Stats (if that matters)
 
 - 14+ completed projects
+- 6+ PCBs designed and routed in KiCad
+- 1 production system deployed and actually running
 - ~10,000 lines of actual code (not counting exercises)
 - 6 programming languages
 - 2 FPGA vendors
@@ -147,7 +149,7 @@ Built it as a standalone executable because I was tired of running Python script
 
 The obvious stuff: understanding CPU architecture teaches you more about programming than most computer science courses. Debugging with OpenOCD/GDB saves you when things break at the register level. VHDL is verbose for a reason. Assembly hurts but afterward you read C code differently.
 
-Less obvious: datasheets have all the answers if you actually read them. Exhaustive testing prevents disasters. Python is good enough for hardware simulation if your logic is correct. Real hardware teaches lessons that simulation can't.
+Less obvious: datasheets have all the answers if you actually read them. Exhaustive testing prevents disasters. Python is good enough for hardware simulation if your logic is correct. Real hardware teaches lessons that simulation can't. Simulation catches arithmetic errors your own hand calculations don't — cross-check one against the other before trusting either. And a thermal simulation turns "should be fine" into an actual number, which is sometimes worse than you hoped and better to find out before you build the board.
 
 ---
 
