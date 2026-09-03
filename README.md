@@ -149,7 +149,7 @@ Built it as a standalone executable because I was tired of running Python script
 
 The obvious stuff: understanding CPU architecture teaches you more about programming than most computer science courses. Debugging with OpenOCD/GDB saves you when things break at the register level. VHDL is verbose for a reason. Assembly hurts but afterward you read C code differently.
 
-Less obvious: datasheets have all the answers if you actually read them. Exhaustive testing prevents disasters. Python is good enough for hardware simulation if your logic is correct. Real hardware teaches lessons that simulation can't. Simulation catches arithmetic errors your own hand calculations don't — cross-check one against the other before trusting either. And a thermal simulation turns "should be fine" into an actual number, which is sometimes worse than you hoped and better to find out before you build the board.
+Less obvious: datasheets have all the answers if you actually read them. Exhaustive testing prevents disasters. Python is good enough for hardware simulation if your logic is correct. Real hardware teaches lessons that simulation can't. Simulation catches the arithmetic errors hand calculations miss. Thermal FEM turns "should be fine" into an actual number worth knowing before you build.
 
 ---
 
