@@ -49,6 +49,11 @@ Full power-supply design loop documented as an honest engineering logbook:
 
 The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis.
 
+### Adjustable LM2596 Buck Converter — PCB & Thermal FEM
+[LM2596-Adjustable-Buck-Converter](https://github.com/IKGB105/LM2596-Adjustable-Buck-Converter)
+
+Companion project to the LM317 supply above, built mainly for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep across the full adjustable range found the real thermal limit wasn't the regulator IC — it was the catch diode, exceeding its rated junction temperature at the low-output-voltage extreme. Root-caused to an isolated ground via at the diode's anode; fix proposed, not yet built. Same "honest logbook" standard as the LM317 project: every result marked calculated, simulated, or pending.
+
 ### Power Electronics PCBs
 [PCBs-POWER-ELECTRONICS](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS)
 
@@ -74,6 +79,11 @@ Also includes:
 - Audited supervisor override flow
 
 This is my strongest example of full-stack integration — hardware, firmware, and software, actually deployed and running, not a class exercise. It's the project that made me want to keep working across the whole stack instead of picking just one.
+
+### IK-Dron — 5" FPV Racing Drone
+[IK-Dron](https://github.com/IKGB105/IK-Dron)
+
+Team project (with [Orlando Contreras](https://github.com/DasReyxr)): diagnosed and flew a 5" racing drone after its original flight controller suffered an unrecoverable hardware failure. Migrated to a SpeedyBee F405 V4 stack on BetaFlight, then root-caused a "won't lift off, then disarms on takeoff" failure via the flight controller's CLI to a propeller/motor-rotation mismatch tripping BetaFlight's runaway-takeoff protection. Full day-by-day build log and a formal technical report included — real hardware/firmware debugging under a hard constraint (it has to actually fly).
 
 ### Outsider — Blackstar Amp Control (AI-Assisted Fork) — [Outsider-AI-FIX](https://github.com/IKGB105/Outsider-AI-FIX)
 * An AI-assisted round of bug fixes and feature completions on a Linux GUI for controlling Blackstar ID-series guitar amplifiers over USB, forked from Jonathan Underwood's original, validated against a real Blackstar ID:15 TVP over the reverse-engineered USB protocol.
@@ -114,7 +124,7 @@ This is my strongest example of full-stack integration — hardware, firmware, a
 ## Stats (if that matters)
 
 - 20+ completed projects
-- 8+ PCBs designed and routed in KiCad
+- 9+ PCBs designed and routed in KiCad
 - 1 production system deployed and actually running
 - ~10,000 lines of actual code (not counting exercises)
 - 6 programming languages
