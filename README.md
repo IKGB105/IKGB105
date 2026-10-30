@@ -15,7 +15,7 @@ That systems-first instinct came from building a production safety-interlock sys
 
 Spend most of my time on:
 - PCB design in KiCad — schematic capture through fabrication-ready routing
-- Power electronics: SCR control, buck conversion, Class D amplification — validated with LTspice and COMSOL thermal FEM
+- Power electronics: SCR control, buck conversion, Class D amplification, closed-loop PID control, hot-swap protection — validated with LTspice and COMSOL thermal FEM
 - Embedded systems (STM32, FreeRTOS, custom drivers) and production hardware/firmware/software integration
 - FPGA design and RISC-V architecture when a project calls for it
 - Debugging with OpenOCD/GDB when things don't work (which is often)
@@ -39,36 +39,14 @@ Used a ground pour across the stackup to keep return paths short on a design tha
 
 My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own.
 
-### Adjustable LM317 Power Supply — SPICE, PCB & Thermal FEM
-[LM317-Adjustable-PowerSupply](https://github.com/IKGB105/LM317-Adjustable-PowerSupply)
+### Power Electronics — SPICE, PCB & Thermal FEM
+Five designs spanning linear/switching supplies, hot-swap protection, and closed-loop control, documented as an honest engineering logbook: every result marked calculated, simulated, or pending.
 
-Full power-supply design loop documented as an honest engineering logbook: 
-  * LTspice simulation of the adjustable topology
-  * KiCad PCB layout
-  * COMSOL thermal FEM study of the regulator's worst-case temperature
-
-The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis.
-
-### Adjustable LM2596 Buck Converter — PCB & Thermal FEM
-[LM2596-Adjustable-Buck-Converter](https://github.com/IKGB105/LM2596-Adjustable-Buck-Converter)
-
-Companion project to the LM317 supply above, built mainly for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep across the full adjustable range found the real thermal limit wasn't the regulator IC — it was the catch diode, exceeding its rated junction temperature at the low-output-voltage extreme. Root-caused to an isolated ground via at the diode's anode; fix proposed, not yet built. Same "honest logbook" standard as the LM317 project: every result marked calculated, simulated, or pending.
-
-### Hot-Swap eFuse (LTC4215) — SPICE, PCB & Thermal FEM
-[EFUSE-LTC4215-HotSwap](https://github.com/IKGB105/EFUSE-LTC4215-HotSwap)
-
-12V hot-swap/eFuse front-end: controlled inrush, latching overcurrent shutdown, and auto-retry undervoltage lockout, validated in LTspice against the IC's own internal startup-delay behavior. A coupled electrical-thermal COMSOL model (current in the copper solved together with the heat) found the copper pours themselves were the dominant heat source at the rated 15A — not the MOSFET or sense resistor alone — driving a lower, thermally-safe continuous-current recommendation. Same "honest logbook" standard as the LM317/LM2596 projects: every result marked calculated, simulated, or pending.
-
-### Power Electronics PCBs
-[PCBs-POWER-ELECTRONICS](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS)
-
-Four physical PCBs from power electronics coursework, each with its own schematic, layout, and 3D render:
-- SCR/thyristor firing controller
-- Buck converter
-- STM32-controlled Class D amplifier
-- Two-board protected voltage supply with short-circuit protection
-
-All four designed, routed, and rendered; the protected power supply's power stage is fully routed with fabrication-ready Gerbers. Simpler single-purpose boards than the ARM PCB above, but real practice across control, power-conversion, and audio topologies.
+- **[Adjustable LM317 Power Supply](https://github.com/IKGB105/LM317-Adjustable-PowerSupply)** — Full design loop: LTspice simulation of the adjustable topology, KiCad PCB layout, COMSOL thermal FEM study of the regulator's worst-case temperature. The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis.
+- **[Adjustable LM2596 Buck Converter](https://github.com/IKGB105/LM2596-Adjustable-Buck-Converter)** — Companion project built for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep found the real thermal limit wasn't the regulator IC — it was the catch diode, root-caused to an isolated ground via at its anode; fix proposed, not yet built.
+- **[Hot-Swap eFuse (LTC4215)](https://github.com/IKGB105/EFUSE-LTC4215-HotSwap)** — 12V hot-swap front-end: controlled inrush, latching overcurrent shutdown, auto-retry undervoltage lockout, validated in LTspice against the IC's own startup-delay behavior. A coupled electrical-thermal COMSOL model found the copper pours themselves were the dominant heat source at the rated 15A — not the MOSFET or sense resistor — driving a lower, thermally-safe continuous-current recommendation.
+- **[Analog PID Control of a Series RLC Circuit](https://github.com/IKGB105/PID-RLC)** — Team project (with [Orlando Contreras](https://github.com/DasReyxr) and [Kevin Lara](https://github.com/Gyonyu)): op-amp based PID controller designed by root locus / pole placement to eliminate the step-response overshoot of an underdamped RLC plant (predicted ~53% open-loop overshoot).
+- **[Power Electronics PCBs](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS)** — Four coursework PCBs (SCR/thyristor firing controller, buck converter, STM32-controlled Class D amplifier, two-board protected voltage supply with short-circuit protection), each fully routed and rendered.
 
 ### IoT Safety Checklist & Hardware Interlock System (Raspberry Pi / Node.js)
 [IOT-Safety-Checklist](https://github.com/IKGB105/IOT-Safety-Checklist)
