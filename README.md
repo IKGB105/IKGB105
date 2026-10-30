@@ -54,6 +54,11 @@ The simulation step caught a real 76mV arithmetic error in an earlier hand calcu
 
 Companion project to the LM317 supply above, built mainly for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep across the full adjustable range found the real thermal limit wasn't the regulator IC — it was the catch diode, exceeding its rated junction temperature at the low-output-voltage extreme. Root-caused to an isolated ground via at the diode's anode; fix proposed, not yet built. Same "honest logbook" standard as the LM317 project: every result marked calculated, simulated, or pending.
 
+### Hot-Swap eFuse (LTC4215) — SPICE, PCB & Thermal FEM
+[EFUSE-LTC4215-HotSwap](https://github.com/IKGB105/EFUSE-LTC4215-HotSwap)
+
+12V hot-swap/eFuse front-end: controlled inrush, latching overcurrent shutdown, and auto-retry undervoltage lockout, validated in LTspice against the IC's own internal startup-delay behavior. A coupled electrical-thermal COMSOL model (current in the copper solved together with the heat) found the copper pours themselves were the dominant heat source at the rated 15A — not the MOSFET or sense resistor alone — driving a lower, thermally-safe continuous-current recommendation. Same "honest logbook" standard as the LM317/LM2596 projects: every result marked calculated, simulated, or pending.
+
 ### Power Electronics PCBs
 [PCBs-POWER-ELECTRONICS](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS)
 
@@ -124,7 +129,7 @@ Team project (with [Orlando Contreras](https://github.com/DasReyxr)): diagnosed 
 ## Stats (if that matters)
 
 - 20+ completed projects
-- 9+ PCBs designed and routed in KiCad
+- 10+ PCBs designed and routed in KiCad
 - 1 production system deployed and actually running
 - ~10,000 lines of actual code (not counting exercises)
 - 6 programming languages
