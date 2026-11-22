@@ -1,7 +1,7 @@
 # Hardware Systems Engineering  
 [My webpage](https://ikgb105.github.io/) 
 
-Electronics student at UAA (7th semester), building toward complete hardware systems — not isolated pieces. Working across FPGA/RTL design, PCB design, embedded systems, and production hardware/firmware/software integration.
+Electronics student at UAA (7th semester), building toward platform/system hardware engineering — the layers behind laptops, servers, and high-performance devices: PCB design, power delivery, signal & power integrity, thermal, and the embedded firmware that brings a board to life.
 
 **Aguascalientes, Mexico**
 
@@ -9,15 +9,16 @@ Electronics student at UAA (7th semester), building toward complete hardware sys
 
 ## What I'm doing
 
-Focused on building complete hardware systems — PCB design, embedded firmware, and the digital logic underneath, not just one layer in isolation. Most of my recent work is physical: I've designed and routed boards from schematic to fabrication-ready Gerbers, from an ARM Cortex-M platform to a handful of power electronics projects (SCR control, buck conversion, a Class D amplifier).
+Focused on building complete hardware systems — PCB design, power delivery, signal integrity, and the embedded firmware that brings a board to life, not just one layer in isolation. Most of my recent work is physical: I've designed and routed boards from schematic to fabrication-ready Gerbers, from an ARM Cortex-M platform to a handful of power electronics projects (SCR control, buck conversion, a Class D amplifier).
 
-That systems-first instinct came from building a production safety-interlock system — a hardware relay wired into a real machine, driven by firmware and a web API, actually running at a food manufacturing plant. Before that I went deep on computer architecture (built a RISC-V simulator, synthesized it on real FPGAs) to understand why CPUs are designed the way they are — that depth still shows up in how I approach hardware, it's just not the main focus anymore.
+That systems-first instinct came from building a production safety-interlock system — a hardware relay wired into a real machine, driven by firmware and a web API, actually running at a food manufacturing plant. Earlier coursework in computer architecture (a RISC-V simulator, synthesized on real FPGAs) gave me a low-level view of why CPUs are designed the way they are, but my focus now is the physical/platform side — the board, the power delivery, and the signals.
 
 Spend most of my time on:
 - PCB design in KiCad — schematic capture through fabrication-ready routing
-- Power electronics: SCR control, buck conversion, Class D amplification, closed-loop PID control, hot-swap protection — validated with LTspice and COMSOL thermal FEM
+- Power delivery & power integrity: SCR control, buck conversion, hot-swap protection, multiphase VRM — validated with LTspice and COMSOL thermal FEM
+- Signal integrity: S-parameter/impedance simulation of RF and high-speed traces (openEMS/FDTD)
 - Embedded systems (STM32, FreeRTOS, custom drivers) and production hardware/firmware/software integration
-- FPGA design and RISC-V architecture when a project calls for it
+- Thermal management and bring-up/debug of real hardware — not just simulation
 - Debugging with OpenOCD/GDB when things don't work (which is often)
 
 ---
@@ -27,7 +28,7 @@ Spend most of my time on:
 **These line up most with where I'm headed — complete systems, not isolated pieces:**
 
 ### ARM Processor PCB Design (KiCad)
-[PCB-ARM-Kicad](https://github.com/IKGB105/PCB-ARM-Kicad)
+[STM32F446-Bovine-DevBoard](https://github.com/IKGB105/STM32F446-Bovine-DevBoard)
 
 Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from schematic capture through final routing. Board includes:
 - USB connector for power and programming
@@ -35,16 +36,20 @@ Designed and routed a 2-layer PCB around an ARM Cortex-M MCU (QFP package), from
 - 8 status LEDs
 - Expansion headers for BOOT mode selection, a camera interface, and general I/O
 
-Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated.
+Used a ground pour across the stackup to keep return paths short on a design that doesn't have the luxury of a dedicated internal ground plane, plus a DC power-integrity pass on the board's power delivery network. Fully routed with fabrication-ready Gerbers and drill files — this one is designed to actually be built, not just simulated.
 
-My only real complex physical-hardware project so far, which is exactly the piece a pure-RTL background doesn't prove on its own.
+My only real complex physical-hardware project so far, which is exactly the piece a pure-digital-design background doesn't prove on its own.
+
+### Signal Integrity
+- **[nRF905 RF Transceiver PCB](https://github.com/UAA-F14/NRF905)** — Team project: 433/868/915MHz RF front-end around the Nordic nRF905, with a differential loop-antenna matching network (L/C). Sliced the matching-network trace out of the routed board (KiCad → Gerbers) and ran an S-parameter/impedance FDTD simulation in openEMS to see how the network actually behaves across the band, not just on paper.
 
 ### Power Electronics — SPICE, PCB & Thermal FEM
-Five designs spanning linear/switching supplies, hot-swap protection, and closed-loop control, documented as an honest engineering logbook: every result marked calculated, simulated, or pending.
+Six designs spanning linear/switching supplies, hot-swap protection, multiphase VRM, and closed-loop control, documented as an honest engineering logbook: every result marked calculated, simulated, or pending.
 
 - **[Adjustable LM317 Power Supply](https://github.com/IKGB105/LM317-Adjustable-PowerSupply)** — Full design loop: LTspice simulation of the adjustable topology, KiCad PCB layout, COMSOL thermal FEM study of the regulator's worst-case temperature. The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis.
 - **[Adjustable LM2596 Buck Converter](https://github.com/IKGB105/LM2596-Adjustable-Buck-Converter)** — Companion project built for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep found the real thermal limit wasn't the regulator IC — it was the catch diode, root-caused to an isolated ground via at its anode; fix proposed, not yet built.
 - **[Hot-Swap eFuse (LTC4215)](https://github.com/IKGB105/EFUSE-LTC4215-HotSwap)** — 12V hot-swap front-end: controlled inrush, latching overcurrent shutdown, auto-retry undervoltage lockout, validated in LTspice against the IC's own startup-delay behavior. A coupled electrical-thermal COMSOL model found the copper pours themselves were the dominant heat source at the rated 15A — not the MOSFET or sense resistor — driving a lower, thermally-safe continuous-current recommendation.
+- **[eFuse Telemetry Front-End (STM32)](https://github.com/IKGB105/EFUSE-LTC4215-Telemetry-STM32)** — STM32F411 I2C telemetry front-end for the LTC4215 eFuse above: the embedded side of the same power-delivery problem, reading real current/voltage/fault state off the hot-swap controller.
 - **[Analog PID Control of a Series RLC Circuit](https://github.com/IKGB105/PID-RLC)** — Team project (with [Orlando Contreras](https://github.com/DasReyxr) and [Kevin Lara](https://github.com/Gyonyu)): op-amp based PID controller designed by root locus / pole placement to eliminate the step-response overshoot of an underdamped RLC plant (predicted ~53% open-loop overshoot).
 - **[Power Electronics PCBs](https://github.com/IKGB105/PCBs-POWER-ELECTRONICS)** — Four coursework PCBs (SCR/thyristor firing controller, buck converter, STM32-controlled Class D amplifier, two-board protected voltage supply with short-circuit protection), each fully routed and rendered.
 
@@ -75,8 +80,6 @@ Team project (with [Orlando Contreras](https://github.com/DasReyxr)): diagnosed 
 **Strong systems/embedded fundamentals — good supporting evidence:**
  * **RFID Access Control System (STM32F446)** — [RFID-Access-Control-using-STM32F446RETx](https://github.com/IKGB105/RFID-Access-Control-using-STM32F446RETx)
 
- * **RISC-V Simulator** — [RISC-V-CPU-Designs](https://github.com/IKGB105/RISC-V-CPU-Designs)
-
  * **FreeRTOS on STM32** — part of [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
 
  * **ARM Assembly** (13+ programs) — also in [UNI-CODES](https://github.com/IKGB105/UNI-CODES).
@@ -92,15 +95,18 @@ Team project (with [Orlando Contreras](https://github.com/DasReyxr)): diagnosed 
 
  * **Transistor Amplifier Suite** (Python) — [transistor-designer-calculator](https://github.com/IKGB105/transistor-designer-calculator)
 
+ * **RISC-V Simulator** — [RISC-V-CPU-Designs](https://github.com/IKGB105/RISC-V-CPU-Designs) — earlier computer-architecture coursework, kept for reference, not the current direction.
+
 ---
 
 ## Languages & Tools
 
-**PCB & Power:** KiCad (schematic to fabrication-ready Gerbers), LTspice, COMSOL (thermal FEM)  
+**PCB & Power:** KiCad, LTspice, COMSOL (thermal FEM)  
+**Signal Integrity:** openEMS (FDTD), S-parameter/impedance analysis  
 **Embedded Platforms:** STM32F411, STM32F446, Arduino, ESP32, AVR ATmega8515  
 **Programming:** Python (simulators, automation), C (embedded), ARM Assembly, C++ (a bit), AVR Assembly  
-**HDL & FPGA:** Verilog, VHDL, Amaranth HDL, Xilinx (ISE/Vivado, Spartan-6), Gowin EDA (Tang Nano 1K)  
-**Tools & Debug:** Git, LaTeX, OpenOCD/GDB, GTKWave 
+**Tools & Debug:** Git, LaTeX, OpenOCD/GDB  
+**Earlier coursework:** Verilog, VHDL, Amaranth HDL, Xilinx (ISE/Vivado, Spartan-6), Gowin EDA (Tang Nano 1K), GTKWave
 
 ---
 
@@ -108,8 +114,8 @@ Team project (with [Orlando Contreras](https://github.com/DasReyxr)): diagnosed 
 
 - 20+ completed projects
 - 10+ PCBs designed and routed in KiCad
+- 6 designs validated with LTspice/COMSOL/openEMS
 - 1 production system deployed and actually running
 - ~10,000 lines of actual code (not counting exercises)
 - 6 programming languages
-- 2 FPGA vendors (Xilinx and Gowin)
 - Cambridge English B2 certified
